@@ -1,2 +1,3 @@
+include ':Ominous'
 include ':app'
 rootProject.name = "Ominous Demo"
