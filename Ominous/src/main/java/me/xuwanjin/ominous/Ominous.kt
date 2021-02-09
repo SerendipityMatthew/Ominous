@@ -94,6 +94,10 @@ class Ominous {
             appCompiledCommitId = this@Ominous.mAppCommitId
             appCompiledCommittedEmail = this@Ominous.mAppCommitterEmail
         }
+
+        deviceAndAppInfo.let {
+
+        }
         return deviceAndAppInfo
     }
 }
