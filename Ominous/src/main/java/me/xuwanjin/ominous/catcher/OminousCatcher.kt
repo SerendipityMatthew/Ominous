@@ -1,12 +1,11 @@
 package me.xuwanjin.ominous.catcher
 
-import android.annotation.SuppressLint
 import me.xuwanjin.ominous.OminousConstant.Companion.LOG_COMMAND_WITH_EVENT_LOG
 import me.xuwanjin.ominous.utils.getDate
 import me.xuwanjin.ominous.utils.getDateWithHours
 import java.io.*
 
-open class OminousCatcher(
+class OminousCatcher(
     private val mLogSavePath: String,
     private val mPid: Int,
 ) : Runnable {
