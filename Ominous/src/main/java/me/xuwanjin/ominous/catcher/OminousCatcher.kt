@@ -2,13 +2,16 @@ package me.xuwanjin.ominous.catcher
 
 import android.util.Log
 import me.xuwanjin.ominous.OminousConstant.Companion.LOG_COMMAND_WITH_EVENT_LOG
+import me.xuwanjin.ominous.bean.DeviceAndAppInfo
 import me.xuwanjin.ominous.utils.getDate
 import me.xuwanjin.ominous.utils.getDateWithHours
 import java.io.*
+import java.lang.StringBuilder
 
 class OminousCatcher(
     private val mLogSavePath: String,
     private val mPid: Int,
+    private val mDeviceAndAppInfo: DeviceAndAppInfo
 ) : Runnable {
 
     override fun run() {
@@ -55,8 +58,14 @@ class OminousCatcher(
         if (!logPathWithDateFile.exists()) {
             Log.d("Matthew", "prepareLogFilePath: ${logPathWithHoursFile.path}")
             logPathWithHoursFile.createNewFile()
+            writeDeviceAndAppInfo()
         }
         return logPathWithHoursFile
+    }
+
+    private fun writeDeviceAndAppInfo() {
+        val stringBuilder: StringBuilder = StringBuilder()
+        stringBuilder.append("")
     }
 
     private fun writeLogToFile(logLine: String, logFilePath: File) {

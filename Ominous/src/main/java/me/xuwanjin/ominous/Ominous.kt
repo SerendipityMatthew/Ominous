@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Environment
 import android.os.Process
+import me.xuwanjin.ominous.bean.DeviceAndAppInfo
 import me.xuwanjin.ominous.catcher.OminousCatcher
 import java.io.File
 
@@ -12,6 +13,8 @@ class Ominous {
     var isCatchEventLog: Boolean = true
     var mLogPid: Int? = null
     lateinit var mContext: Context
+    lateinit var appCommitId: String
+    lateinit var appCommitterEmail: String
 
     class Builder {
         private var mOminous: Ominous = Ominous()
@@ -50,9 +53,11 @@ class Ominous {
             if (isMounted) {
                 var sdcardDir: File? = null
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    sdcardDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    sdcardDir =
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 } else {
-                    sdcardDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    sdcardDir =
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 }
                 mLogSavePath = sdcardDir.path
             }
@@ -60,8 +65,34 @@ class Ominous {
 
         val ominousCatcher: OminousCatcher? =
             this.mLogSavePath?.let {
-                OminousCatcher(it, this.mLogPid!!)
+                OminousCatcher(it, this.mLogPid!!, getDeviceAndAppInfo())
             }
         Thread(ominousCatcher).start()
+    }
+
+    private fun getDeviceAndAppInfo() :DeviceAndAppInfo{
+        val packageInfo = mContext.packageManager.getPackageInfo(mContext.packageName, 0)
+        val versionCode =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                packageInfo.longVersionCode
+            } else {
+                packageInfo.versionCode.toLong()
+            }
+        val versionName = packageInfo.versionName
+        val deviceAndAppInfo = DeviceAndAppInfo()
+        deviceAndAppInfo.apply {
+            appVersionCode = versionCode
+            appVersionName = packageInfo.versionName
+            appName = packageInfo.applicationInfo.name
+            appPackageName = versionName
+            appPackageName = mContext.packageName
+            deviceModel = Build.MODEL
+            deviceBrand = Build.BRAND
+            deviceManufacturer = Build.MANUFACTURER
+            deviceSdkVersion = Build.VERSION.SDK_INT
+            appCompiledCommitId = this@Ominous.appCommitId
+            appCompiledCommittedEmail = this@Ominous.appCommitterEmail
+        }
+        return deviceAndAppInfo
     }
 }
