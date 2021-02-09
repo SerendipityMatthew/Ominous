@@ -1,5 +1,6 @@
 package me.xuwanjin.ominous.catcher
 
+import android.util.Log
 import me.xuwanjin.ominous.OminousConstant.Companion.LOG_COMMAND_WITH_EVENT_LOG
 import me.xuwanjin.ominous.utils.getDate
 import me.xuwanjin.ominous.utils.getDateWithHours
@@ -52,6 +53,7 @@ class OminousCatcher(
         val logPathWithHours = logPathWithDate + File.separator + getDateWithHours() + ".log"
         val logPathWithHoursFile = File(logPathWithHours)
         if (!logPathWithDateFile.exists()) {
+            Log.d("Matthew", "prepareLogFilePath: ${logPathWithHoursFile.path}")
             logPathWithHoursFile.createNewFile()
         }
         return logPathWithHoursFile
