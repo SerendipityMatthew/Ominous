@@ -13,8 +13,8 @@ class Ominous {
     var isCatchEventLog: Boolean = true
     var mLogPid: Int? = null
     lateinit var mContext: Context
-    lateinit var appCommitId: String
-    lateinit var appCommitterEmail: String
+    var appCommitId: String? = null
+    var appCommitterEmail: String? = null
 
     class Builder {
         private var mOminous: Ominous = Ominous()
@@ -70,7 +70,7 @@ class Ominous {
         Thread(ominousCatcher).start()
     }
 
-    private fun getDeviceAndAppInfo() :DeviceAndAppInfo{
+    private fun getDeviceAndAppInfo(): DeviceAndAppInfo {
         val packageInfo = mContext.packageManager.getPackageInfo(mContext.packageName, 0)
         val versionCode =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -87,6 +87,7 @@ class Ominous {
             appPackageName = versionName
             appPackageName = mContext.packageName
             deviceModel = Build.MODEL
+            deviceProduct = Build.PRODUCT
             deviceBrand = Build.BRAND
             deviceManufacturer = Build.MANUFACTURER
             deviceSdkVersion = Build.VERSION.SDK_INT

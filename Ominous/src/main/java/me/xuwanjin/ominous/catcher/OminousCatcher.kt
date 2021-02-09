@@ -55,17 +55,38 @@ class OminousCatcher(
          */
         val logPathWithHours = logPathWithDate + File.separator + getDateWithHours() + ".log"
         val logPathWithHoursFile = File(logPathWithHours)
-        if (!logPathWithDateFile.exists()) {
-            Log.d("Matthew", "prepareLogFilePath: ${logPathWithHoursFile.path}")
+        if (!logPathWithHoursFile.exists()) {
             logPathWithHoursFile.createNewFile()
-            writeDeviceAndAppInfo()
+            writeDeviceAndAppInfo(logPathWithHoursFile)
         }
         return logPathWithHoursFile
     }
 
-    private fun writeDeviceAndAppInfo() {
-        val stringBuilder: StringBuilder = StringBuilder()
-        stringBuilder.append("")
+    /**
+     * 创建文件的时候, 把设备的信息, app 的信息 写入到文件当中
+     */
+    private fun writeDeviceAndAppInfo(logFile:File) {
+        val stringBuilder = StringBuilder()
+        stringBuilder.append("=============== app info ==================\n")
+        stringBuilder.append("appName = " + mDeviceAndAppInfo.appName + "\n")
+        stringBuilder.append("appVersionCode = " + mDeviceAndAppInfo.appVersionCode + "\n")
+        stringBuilder.append("appVersionName = " + mDeviceAndAppInfo.appVersionName + "\n")
+        stringBuilder.append("appCompiledCommitId = " + mDeviceAndAppInfo.appCompiledCommitId + "\n")
+        stringBuilder.append("=============== device info ==================\n")
+        stringBuilder.append("deviceBrand = " + mDeviceAndAppInfo.deviceBrand + "\n")
+        stringBuilder.append("deviceModel = " + mDeviceAndAppInfo.deviceModel + "\n")
+        stringBuilder.append("deviceManufacturer = " + mDeviceAndAppInfo.deviceManufacturer + "\n")
+        stringBuilder.append("deviceProduct = " + mDeviceAndAppInfo.deviceProduct + "\n")
+        stringBuilder.append("deviceSdkVersion = " + mDeviceAndAppInfo.deviceSdkVersion + "\n")
+        stringBuilder.append("isDeviceRoot = " + mDeviceAndAppInfo.isDeviceRoot + "\n")
+        stringBuilder.append("isEmulator = " + mDeviceAndAppInfo.isEmulator + "\n")
+        stringBuilder.append("\n")
+        stringBuilder.append("\n")
+        stringBuilder.append("\n")
+        val fileOutputStream:FileOutputStream = FileOutputStream(logFile, true)
+        fileOutputStream.write(stringBuilder.toString().toByteArray())
+        fileOutputStream.flush()
+        fileOutputStream.close()
     }
 
     private fun writeLogToFile(logLine: String, logFilePath: File) {

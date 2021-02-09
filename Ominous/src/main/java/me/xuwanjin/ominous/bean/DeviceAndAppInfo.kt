@@ -20,11 +20,11 @@ class DeviceAndAppInfo {
      *  app 被打包的时候, 最新的 commit id, 可以用于快速定位问题
      *  在不修改版本号, 释放了多个 debug 版本的情况下, 可以快速定位问题
      */
-    lateinit var appCompiledCommitId: String
+    var appCompiledCommitId: String? = null
 
     /**
      *  app 被打包的时候, 最新的 commit id提交人的 邮箱地址,
      *  在默认的情况下, log 发送到这个邮箱里面去
      */
-    lateinit var appCompiledCommittedEmail: String
+    var appCompiledCommittedEmail: String? = null
 }
