@@ -1,39 +1,39 @@
 package me.xuwanjin.ominous.catcher
 
 import android.annotation.SuppressLint
+import me.xuwanjin.ominous.OminousConstant.Companion.LOG_COMMAND_WITH_EVENT_LOG
 import me.xuwanjin.ominous.utils.getDate
 import me.xuwanjin.ominous.utils.getDateWithHours
-import java.io.BufferedReader
-import java.io.File
-import java.io.InputStreamReader
-import java.text.SimpleDateFormat
-import java.util.*
+import java.io.*
 
-class OminousCatcher(
-        private val mLogSavePath: String,
-        private val mPid: Int,
+open class OminousCatcher(
+    private val mLogSavePath: String,
+    private val mPid: Int,
 ) : Runnable {
 
     override fun run() {
-        val logCatcherCmd = "logcat | grep \"($mPid)\""
+        val logCatcherCmd = "$LOG_COMMAND_WITH_EVENT_LOG | grep \"($mPid)\""
 
         val logCatcherProcess: Process = Runtime.getRuntime().exec(logCatcherCmd)
 
-        var bufferedReader = BufferedReader(InputStreamReader(logCatcherProcess.inputStream))
+        val bufferedReader = BufferedReader(InputStreamReader(logCatcherProcess.inputStream))
         var logLine: String
         while ((bufferedReader.readLine().also { logLine = it }) != null) {
             if (logLine.isEmpty()) {
                 continue
             }
             if (logLine.contains(mPid.toString(), true)) {
-                logWriteToFile(logLine)
-
+                val logFilePath = prepareLogFilePath()
+                writeLogToFile(logLine, logFilePath)
             }
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun logWriteToFile(logLine: String) {
+    /**
+     *  准备log保存的路径
+     *  @return 返回 log 生成的 file
+     */
+    private fun prepareLogFilePath(): File {
         val logCatcherFile: File = File(mLogSavePath)
         if (!logCatcherFile.exists()) {
             logCatcherFile.mkdirs()
@@ -50,10 +50,29 @@ class OminousCatcher(
         /**
          *  准备该一小时的 log 存放的路径
          */
-        val logPathWithHours = logPathWithDate + File.separator + getDateWithHours()
+        val logPathWithHours = logPathWithDate + File.separator + getDateWithHours() + ".log"
         val logPathWithHoursFile = File(logPathWithHours)
         if (!logPathWithDateFile.exists()) {
             logPathWithHoursFile.createNewFile()
         }
+        return logPathWithHoursFile
+    }
+
+    private fun writeLogToFile(logLine: String, logFilePath: File) {
+        val content: String = logLine + "\r\n"
+        var fileOutputStream: FileOutputStream? = null
+        try {
+            fileOutputStream = FileOutputStream(logFilePath, true)
+            fileOutputStream.write(content.toByteArray())
+            fileOutputStream.flush()
+            fileOutputStream.close()
+        } catch (fileNotFoundException: FileNotFoundException) {
+            fileNotFoundException.printStackTrace()
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+        } finally {
+            fileOutputStream?.close()
+        }
+
     }
 }

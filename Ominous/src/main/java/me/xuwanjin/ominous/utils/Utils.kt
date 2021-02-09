@@ -11,5 +11,5 @@ fun getDate(): String {
 
 @SuppressLint("SimpleDateFormat")
 fun getDateWithHours(): String{
-    return SimpleDateFormat("yyyy-MM-dd--HH").format(Date())
+    return SimpleDateFormat("yyyy-MM-dd-HH").format(Date())
 }
