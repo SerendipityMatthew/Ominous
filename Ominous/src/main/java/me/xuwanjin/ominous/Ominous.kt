@@ -13,8 +13,8 @@ class Ominous {
     var isCatchEventLog: Boolean = true
     var mLogPid: Int? = null
     lateinit var mContext: Context
-    var appCommitId: String? = null
-    var appCommitterEmail: String? = null
+    var mAppCommitId: String? = null
+    var mAppCommitterEmail: String? = null
 
     class Builder {
         private var mOminous: Ominous = Ominous()
@@ -91,8 +91,8 @@ class Ominous {
             deviceBrand = Build.BRAND
             deviceManufacturer = Build.MANUFACTURER
             deviceSdkVersion = Build.VERSION.SDK_INT
-            appCompiledCommitId = this@Ominous.appCommitId
-            appCompiledCommittedEmail = this@Ominous.appCommitterEmail
+            appCompiledCommitId = this@Ominous.mAppCommitId
+            appCompiledCommittedEmail = this@Ominous.mAppCommitterEmail
         }
         return deviceAndAppInfo
     }
