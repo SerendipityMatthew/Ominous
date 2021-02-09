@@ -14,6 +14,4 @@ class OminousDemoApp : Application() {
             .build()
         ominous.startCatchLog()
     }
-
-
 }

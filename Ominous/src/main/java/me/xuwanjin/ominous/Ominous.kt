@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.os.Environment
 import android.os.Process
-import androidx.annotation.RequiresApi
 import me.xuwanjin.ominous.catcher.OminousCatcher
 import java.io.File
 
@@ -59,7 +58,10 @@ class Ominous {
             }
         }
 
-        val ominousCatcher: OminousCatcher? = this.mLogSavePath?.let { OminousCatcher(it, this.mLogPid!!) }
+        val ominousCatcher: OminousCatcher? =
+            this.mLogSavePath?.let {
+                OminousCatcher(it, this.mLogPid!!)
+            }
         Thread(ominousCatcher).start()
     }
 }
