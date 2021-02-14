@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_show_again">不再展示</string>
+    <string name="direct_bugreport">直接反馈</string>
+    <string name="screenshot_bugreport">截图反馈</string>
+    <string name="bug_report_title">遇到了问题了吗?</string>
+    <string name="bug_report_content">如果你在使用中遇到了问题, 可通过直接反馈给我们</string>
+</resources>
