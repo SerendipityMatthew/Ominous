@@ -26,9 +26,8 @@ import me.xuwanjin.ominous.R
 fun BugReportDialog(context: Context) {
     ConstraintLayout(
         modifier = Modifier
-            .padding(start = 20.dp, end = 20.dp, bottom = 50.dp)
             .clip(RoundedCornerShape(20.dp))
-            .background(Color.White)
+            .background(Color.White, RoundedCornerShape(20.dp))
     ) {
         val (noShowAgain, upContentView, closeDialog, bugReportTitle,
             bugReportContent, directReport, screenshotReport)

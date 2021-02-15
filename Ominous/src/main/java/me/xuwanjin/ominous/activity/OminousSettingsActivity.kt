@@ -17,18 +17,12 @@ class OminousSettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ShowText(this)
-        }
-    }
-}
 
-@Composable
-fun ShowText(context: Context) {
-    Row(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.Green)
-    ) {
-        BugReportDialog(context)
+            val fragment = OminousSettingFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .add(fragment, "bugreport_dialog")
+                .commit()
+        }
     }
 }
