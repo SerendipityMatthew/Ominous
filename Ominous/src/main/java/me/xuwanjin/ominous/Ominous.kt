@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Environment
 import android.os.Process
+import android.util.Log
 import me.xuwanjin.ominous.bean.DeviceAndAppInfo
 import me.xuwanjin.ominous.catcher.OminousCatcher
 import java.io.File
@@ -52,6 +53,8 @@ class Ominous {
             val isMounted = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)
             if (isMounted) {
                 var sdcardDir: File? = null
+
+                Log.d("Matthew", "startCatchLog: ${Environment.getExternalStorageDirectory().absoluteFile}")
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     sdcardDir =
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
@@ -60,6 +63,7 @@ class Ominous {
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 }
                 mLogSavePath = sdcardDir.path
+                Log.d("Matthew", "startCatchLog: mLogSavePath = $mLogSavePath")
             }
         }
 
