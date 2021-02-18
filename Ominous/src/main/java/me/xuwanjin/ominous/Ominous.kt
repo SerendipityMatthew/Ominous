@@ -40,6 +40,16 @@ class Ominous {
             return this
         }
 
+        fun setAppCommitId(commitId: String): Builder {
+            mOminous.mAppCommitId = commitId
+            return this
+        }
+
+        fun setAppCommitterEmail(committerEmail: String): Builder {
+            mOminous.mAppCommitterEmail = committerEmail
+            return this
+        }
+
         fun build(): Ominous {
             return mOminous
         }
@@ -54,7 +64,10 @@ class Ominous {
             if (isMounted) {
                 var sdcardDir: File? = null
 
-                Log.d("Matthew", "startCatchLog: ${Environment.getExternalStorageDirectory().absoluteFile}")
+                Log.d(
+                    "Matthew",
+                    "startCatchLog: ${Environment.getExternalStorageDirectory().absoluteFile}"
+                )
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     sdcardDir =
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)

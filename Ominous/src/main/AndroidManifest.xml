@@ -16,5 +16,12 @@
             >
 
         </activity>
+
+        <activity
+            android:name=".activity.BugReportActivity"
+            android:theme="@style/Theme.AppCompat.DayNight"
+            >
+
+        </activity>
     </application>
 </manifest>
