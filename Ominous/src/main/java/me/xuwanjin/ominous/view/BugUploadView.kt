@@ -14,8 +14,10 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.AndroidDialogProperties
+import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import me.xuwanjin.ominous.activity.BugReportActivity
 import androidx.compose.ui.window.DialogProperties as DialogProperties
 
@@ -45,7 +47,7 @@ fun BugUploadView() {
             Text(
                 text = "生成当前时间段的log",
                 style = TextStyle(
-                    fontSize = TextUnit.Sp(18)
+                    fontSize = 16.sp
                 )
             )
         }
@@ -65,7 +67,7 @@ fun BugUploadView() {
             Text(
                 text = "选择上传 log 的时间段",
                 style = TextStyle(
-                    fontSize = TextUnit.Sp(18)
+                    fontSize = 18.sp
                 )
             )
         }
@@ -85,7 +87,7 @@ fun BugUploadView() {
             Text(
                 text = "压缩当天的所有log",
                 style = TextStyle(
-                    fontSize = TextUnit.Sp(18)
+                    fontSize = 18.sp
                 )
             )
         }
@@ -105,7 +107,7 @@ fun BugUploadView() {
             Text(
                 text = "发送至邮箱",
                 style = TextStyle(
-                    fontSize = TextUnit.Sp(18)
+                    fontSize = 18.sp
                 )
             )
         }
@@ -123,7 +125,7 @@ fun BugUploadView() {
                 },
             style = TextStyle(
                 color = Color.Gray,
-                fontSize = TextUnit.Sp(10)
+                fontSize = 10.sp
             )
         )
         val isShowDialog = remember { mutableStateOf<Boolean>(false) }
@@ -144,7 +146,7 @@ fun BugUploadView() {
             Text(
                 text = "修改发送邮箱",
                 style = TextStyle(
-                    fontSize = TextUnit.Sp(18)
+                    fontSize = 18.sp
                 )
             )
         }
@@ -226,7 +228,7 @@ fun ModifyLogReceiveEmailDialog(isShowDialog: MutableState<Boolean>) {
                 Text(text = "确定")
             }
         },
-        properties = AndroidDialogProperties(
+        properties = DialogProperties(
             dismissOnClickOutside = true,
             dismissOnBackPress = true
         )

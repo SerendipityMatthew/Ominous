@@ -13,13 +13,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import me.xuwanjin.ominous.R
 
 @Composable
@@ -66,7 +69,7 @@ fun BugReportDialog(context: Context) {
         )
 
         Image(
-            imageResource(id = R.drawable.close),
+            bitmap = ImageBitmap(0,0),
             modifier = Modifier
                 .height(15.dp)
                 .width(15.dp)
@@ -78,7 +81,10 @@ fun BugReportDialog(context: Context) {
                         end.linkTo(parent.end, margin = 10.dp)
                         top.linkTo(parent.top, margin = 10.dp)
                     }
-                })
+                },
+            contentDescription = ""
+        )
+
 
         Text(
             text = context.resources.getString(R.string.bug_report_title),
@@ -98,7 +104,7 @@ fun BugReportDialog(context: Context) {
 
             style = TextStyle(
                 color = Color.Black,
-                fontSize = TextUnit.Companion.Sp(20),
+                fontSize = 20.sp,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold
             ),
@@ -120,7 +126,7 @@ fun BugReportDialog(context: Context) {
 
             style = TextStyle(
                 color = Color.Black,
-                fontSize = TextUnit.Companion.Sp(15),
+                fontSize = 15.sp,
                 textAlign = TextAlign.Center,
             ),
         )
@@ -150,7 +156,7 @@ fun BugReportDialog(context: Context) {
                 color = Color.Blue,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                fontSize = TextUnit.Companion.Sp(15),
+                fontSize = 15.sp,
                 fontFamily = FontFamily.Serif
             )
         )
@@ -179,7 +185,7 @@ fun BugReportDialog(context: Context) {
                 color = Color.Blue,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                fontSize = TextUnit.Companion.Sp(15),
+                fontSize = 15.sp,
                 fontFamily = FontFamily.Serif
             )
         )

@@ -2,8 +2,9 @@ package me.xuwanjin.ominous.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
+import androidx.activity.compose.setContent
+
 import me.xuwanjin.ominous.view.BugUploadView
 
 class BugReportActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class BugReportActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             BugUploadView()
         }

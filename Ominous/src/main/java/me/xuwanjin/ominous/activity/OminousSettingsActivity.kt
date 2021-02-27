@@ -2,8 +2,8 @@ package me.xuwanjin.ominous.activity
 
 import android.Manifest
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.platform.setContent
 import me.xuwanjin.ominous.api.IOnPermissionGranted
 import me.xuwanjin.ominous.utils.requestPermission
 
