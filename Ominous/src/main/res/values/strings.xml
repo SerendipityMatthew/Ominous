@@ -5,4 +5,11 @@
     <string name="screenshot_bugreport">截图反馈</string>
     <string name="bug_report_title">遇到了问题了吗?</string>
     <string name="bug_report_content">如果你在使用中遇到了问题, 可通过直接反馈给我们</string>
+    <string name="current_period_log">生成当前时间段的log</string>
+    <string name="selected_period_log">选择上传 log 的时间段</string>
+    <string name="compress_today_log">压缩当天的所有log</string>
+    <string name="send_to_email">发送至邮箱</string>
+    <string name="modify_email_receiver">修改发送邮箱</string>
+    <string name="send_to_email_desc">日志将被发送至该邮箱</string>
+    <string name="please_input_email">请输入邮箱</string>
 </resources>

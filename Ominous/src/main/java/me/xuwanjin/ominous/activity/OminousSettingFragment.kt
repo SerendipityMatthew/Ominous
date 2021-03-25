@@ -1,6 +1,5 @@
 package me.xuwanjin.ominous.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +36,7 @@ class OminousSettingFragment : DialogFragment() {
 }
 
 
+@Preview(widthDp = 400, heightDp = 600)
 @Composable
 fun ShowDialog() {
     BugReportDialog()

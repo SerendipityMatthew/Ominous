@@ -1,7 +1,6 @@
 package me.xuwanjin.ominous.view
 
 import android.util.Log
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -12,17 +11,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
+import me.xuwanjin.ominous.OminousConstant
+import me.xuwanjin.ominous.R
 import me.xuwanjin.ominous.activity.BugReportActivity
-import androidx.compose.ui.window.DialogProperties as DialogProperties
 
 @Composable
-fun BugUploadView() {
+fun BugUploadView(onFunctionSelected: (String) -> Unit) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
@@ -41,11 +41,13 @@ fun BugUploadView() {
                         top.linkTo(parent.top, margin = 10.dp)
                     }
                 },
-            onClick = { }
+            onClick = {
+                onFunctionSelected(OminousConstant.CURRENT_PERIOD_LOG)
+            }
         ) {
 
             Text(
-                text = "生成当前时间段的log",
+                text = stringResource(R.string.current_period_log),
                 style = TextStyle(
                     fontSize = 16.sp
                 )
@@ -61,11 +63,14 @@ fun BugUploadView() {
                         top.linkTo(currentPeriodLog.bottom, margin = 10.dp)
                     }
                 },
-            onClick = { }
+            onClick = {
+                onFunctionSelected(OminousConstant.SELECTED_PERIOD_LOG)
+
+            }
         ) {
 
             Text(
-                text = "选择上传 log 的时间段",
+                text = stringResource(R.string.selected_period_log),
                 style = TextStyle(
                     fontSize = 18.sp
                 )
@@ -82,10 +87,13 @@ fun BugUploadView() {
                         top.linkTo(selectPeriodLog.bottom, margin = 10.dp)
                     }
                 },
-            onClick = { }) {
+            onClick = {
+                onFunctionSelected(OminousConstant.SELECTED_PERIOD_LOG)
+            }
+        ) {
 
             Text(
-                text = "压缩当天的所有log",
+                text = stringResource(R.string.compress_today_log),
                 style = TextStyle(
                     fontSize = 18.sp
                 )
@@ -102,10 +110,13 @@ fun BugUploadView() {
 
                     }
                 },
-            onClick = { },
+            onClick = {
+                onFunctionSelected(OminousConstant.SEND_TO_EMAIL)
+
+            },
         ) {
             Text(
-                text = "发送至邮箱",
+                text = stringResource(R.string.send_to_email),
                 style = TextStyle(
                     fontSize = 18.sp
                 )
@@ -113,7 +124,7 @@ fun BugUploadView() {
         }
 
         Text(
-            text = "日志将被发送至该邮箱: \n${BugReportActivity.DEFAULT_LOG_RECEIVE_EMAIL}",
+            text = stringResource(R.string.send_to_email_desc) + " \n${BugReportActivity.DEFAULT_LOG_RECEIVE_EMAIL}",
             modifier = Modifier
                 .wrapContentSize()
                 .composed {
@@ -144,7 +155,7 @@ fun BugUploadView() {
                 isShowDialog.value = true
             }) {
             Text(
-                text = "修改发送邮箱",
+                text = stringResource(R.string.modify_email_receiver),
                 style = TextStyle(
                     fontSize = 18.sp
                 )
@@ -177,7 +188,7 @@ fun ModifyLogReceiveEmailDialog(isShowDialog: MutableState<Boolean>) {
                         inputEmailAddress.value = it
                     },
                     placeholder = {
-                        Text(text = "请输入邮箱")
+                        Text(text = stringResource(R.string.please_input_email))
                     },
                     modifier = Modifier
                         .wrapContentSize()

@@ -1,6 +1,5 @@
 package me.xuwanjin.ominous.view
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,13 +18,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import me.xuwanjin.ominous.OminousConstant
 import me.xuwanjin.ominous.R
 
-@Preview(widthDp = 400, heightDp = 600)
 @Composable
 fun BugReportDialog() {
     ConstraintLayout(
