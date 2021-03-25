@@ -176,7 +176,7 @@ fun ModifyLogReceiveEmailDialog(isShowDialog: MutableState<Boolean>) {
     AlertDialog(
         onDismissRequest = onDialogDismiss,
         title = {
-            Text(text = "收件人邮箱")
+            Text(text = stringResource(R.string.receiver_email_title))
         },
         text = {
             ConstraintLayout(
@@ -218,7 +218,7 @@ fun ModifyLogReceiveEmailDialog(isShowDialog: MutableState<Boolean>) {
 
                     )
                     Text(
-                        text = "并将此邮箱设置为默认邮箱？",
+                        text = stringResource(R.string.set_default_email_hint),
                         modifier = Modifier.padding(start = 5.dp)
 
                     )
@@ -231,12 +231,14 @@ fun ModifyLogReceiveEmailDialog(isShowDialog: MutableState<Boolean>) {
                 onClick = onDialogDismiss,
                 modifier = Modifier.padding(start = 0.dp)
             ) {
-                Text(text = "取消")
+                Text(text = stringResource(R.string.cancel))
             }
         },
         confirmButton = {
-            Button(onClick = { /*TODO*/ }) {
-                Text(text = "确定")
+            Button(onClick = {
+
+            }) {
+                Text(text = stringResource(R.string.ok))
             }
         },
         properties = DialogProperties(

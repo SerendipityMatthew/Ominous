@@ -12,4 +12,8 @@
     <string name="modify_email_receiver">修改发送邮箱</string>
     <string name="send_to_email_desc">日志将被发送至该邮箱</string>
     <string name="please_input_email">请输入邮箱</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="set_default_email_hint">并将此邮箱设置为默认邮箱?</string>
+    <string name="receiver_email_title">收件人邮箱</string>
 </resources>
