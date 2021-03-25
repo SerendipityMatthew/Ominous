@@ -1,18 +1,13 @@
 package me.xuwanjin.ominous.activity
 
-import android.Manifest
 import android.content.Context
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.DialogFragment
 import me.xuwanjin.ominous.view.BugReportDialog
 
@@ -30,7 +25,7 @@ class OminousSettingFragment : DialogFragment() {
         return ComposeView(requireContext())
             .apply {
                 setContent {
-                    ShowDialog(context)
+                    ShowDialog()
                 }
             }
     }
@@ -41,7 +36,8 @@ class OminousSettingFragment : DialogFragment() {
     }
 }
 
+
 @Composable
-fun ShowDialog(context: Context) {
-    BugReportDialog(context)
+fun ShowDialog() {
+    BugReportDialog()
 }

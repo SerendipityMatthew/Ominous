@@ -13,20 +13,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import me.xuwanjin.ominous.R
 
+@Preview(widthDp = 400, heightDp = 600)
 @Composable
-fun BugReportDialog(context: Context) {
+fun BugReportDialog() {
     ConstraintLayout(
         modifier = Modifier
             .clip(RoundedCornerShape(20.dp))
@@ -51,7 +52,7 @@ fun BugReportDialog(context: Context) {
                 },
         )
 
-        Text(text = context.resources.getString(R.string.no_show_again),
+        Text(text = stringResource(R.string.no_show_again),
             modifier = Modifier
                 .clickable {
 
@@ -87,7 +88,7 @@ fun BugReportDialog(context: Context) {
 
 
         Text(
-            text = context.resources.getString(R.string.bug_report_title),
+            text = stringResource(R.string.bug_report_title),
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
@@ -111,7 +112,7 @@ fun BugReportDialog(context: Context) {
         )
 
         Text(
-            text = context.resources.getString(R.string.bug_report_content),
+            text = stringResource(R.string.bug_report_content),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 30.dp, end = 30.dp)
@@ -131,7 +132,7 @@ fun BugReportDialog(context: Context) {
             ),
         )
         Text(
-            text = context.resources.getString(R.string.direct_bugreport),
+            text = stringResource(R.string.direct_bugreport),
             modifier = Modifier
                 .padding(top = 20.dp, start = 20.dp, end = 20.dp)
 
@@ -161,7 +162,7 @@ fun BugReportDialog(context: Context) {
             )
         )
         Text(
-            text = context.resources.getString(R.string.screenshot_bugreport),
+            text = stringResource(R.string.screenshot_bugreport),
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 40.dp)
 
