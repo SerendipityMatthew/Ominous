@@ -8,12 +8,13 @@ import me.xuwanjin.ominous.OminousConstant
 class OminousDemoApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        val ominous:Ominous = Ominous.Builder()
+        val ominous: Ominous.OminousInstance = Ominous.Builder()
             .setCatchEventLog(true)
             .setContext(applicationContext)
             .setLogSavePath(OminousConstant.LOG_SAVE_PATH_ANDROID_DATA)
             .setLogPid(Process.myPid())
             .build()
         ominous.startCatchLog()
+
     }
 }
