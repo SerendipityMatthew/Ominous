@@ -49,7 +49,7 @@ fun BugUploadView(onFunctionSelected: (String) -> Unit) {
             Text(
                 text = stringResource(R.string.current_period_log),
                 style = TextStyle(
-                    fontSize = 16.sp
+                    fontSize = 18.sp
                 )
             )
         }
@@ -88,7 +88,7 @@ fun BugUploadView(onFunctionSelected: (String) -> Unit) {
                     }
                 },
             onClick = {
-                onFunctionSelected(OminousConstant.SELECTED_PERIOD_LOG)
+                onFunctionSelected(OminousConstant.SELECT_CURRENT_DAY_LOG)
             }
         ) {
 
@@ -136,7 +136,7 @@ fun BugUploadView(onFunctionSelected: (String) -> Unit) {
                 },
             style = TextStyle(
                 color = Color.Gray,
-                fontSize = 10.sp
+                fontSize = 14.sp
             )
         )
         val isShowDialog = remember { mutableStateOf<Boolean>(false) }

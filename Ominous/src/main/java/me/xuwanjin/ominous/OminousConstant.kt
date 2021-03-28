@@ -4,6 +4,7 @@ class OminousConstant {
     companion object {
         const val LOG_COMMAND_WITHOUT_EVENT_LOG = "logcat"
         const val LOG_COMMAND_WITH_EVENT_LOG = "logcat -b all "
+
         const val CURRENT_PERIOD_LOG = "current_period_log"
         const val SELECTED_PERIOD_LOG = "selected_period_log"
         const val SELECT_CURRENT_DAY_LOG = "select_current_day_log"
