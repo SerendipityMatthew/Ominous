@@ -1,5 +1,6 @@
 package me.xuwanjin.ominous.catcher
 
+import android.util.Log
 import me.xuwanjin.ominous.OminousConstant.Companion.LOG_COMMAND_WITH_EVENT_LOG
 import me.xuwanjin.ominous.bean.DeviceAndAppInfo
 import me.xuwanjin.ominous.utils.getDate

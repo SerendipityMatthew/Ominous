@@ -11,5 +11,9 @@ class OminousConstant {
         const val SEND_TO_EMAIL = "send_to_email"
         const val MODIFY_EMAIL_RECEIVER = "modify_email_receiver"
         const val NO_SHOW_AGAIN = "no_show_again"
+
+        const val LOG_SAVE_PATH_DATA = "log_save_path_data"
+        const val LOG_SAVE_PATH_ANDROID_DATA ="log_save_path_android_data"
+        const val LOG_SAVE_PATH_SDCARD ="log_save_path_sdcard"
     }
 }
