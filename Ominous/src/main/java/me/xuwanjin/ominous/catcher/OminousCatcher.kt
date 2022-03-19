@@ -21,18 +21,21 @@ class OminousCatcher(
         val bufferedReader: BufferedReader =
             BufferedReader(InputStreamReader(logCatcherProcess.inputStream))
 
-        var logLine: String
+        var logLine: String?
         while ((bufferedReader.readLine().also { logLine = it }) != null) {
 
-            if (logLine.isEmpty()) {
+            if (logLine.isNullOrEmpty()) {
                 continue
             }
-            if (logLine.contains(mPid.toString(), true)) {
-                val logFilePath = prepareLogFilePath()
-                logFilePath?.let {
-                    writeLogToFile(logLine, it)
+            if (logLine != null){
+                if (logLine!!.contains(mPid.toString(), true)) {
+                    val logFilePath = prepareLogFilePath()
+                    logFilePath?.let {
+                        writeLogToFile(logLine!!, it)
+                    }
                 }
             }
+
         }
     }
 
