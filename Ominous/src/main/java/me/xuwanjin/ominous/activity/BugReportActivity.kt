@@ -19,6 +19,7 @@ class BugReportActivity : AppCompatActivity() {
          */
         var DEFAULT_LOG_RECEIVE_EMAIL = "xuwj@mxchip.com"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,10 +28,9 @@ class BugReportActivity : AppCompatActivity() {
         }
     }
 }
+
 @Preview(widthDp = 400, heightDp = 600, backgroundColor = 0xFF00FF)
 @Composable
-fun ShowBugView(){
-    BugUploadView(onFunctionSelected = {
-        Log.d(BugReportActivity.TAG, "onCreate: it = $it")
-    })
+fun ShowBugView() {
+
 }

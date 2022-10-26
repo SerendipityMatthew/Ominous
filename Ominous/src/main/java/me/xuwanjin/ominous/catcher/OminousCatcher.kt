@@ -1,11 +1,14 @@
 package me.xuwanjin.ominous.catcher
 
 import android.util.Log
+import kotlinx.coroutines.*
 import me.xuwanjin.ominous.OminousConstant.Companion.LOG_COMMAND_WITH_EVENT_LOG
 import me.xuwanjin.ominous.bean.DeviceAndAppInfo
+import me.xuwanjin.ominous.utils.Utils
 import me.xuwanjin.ominous.utils.getDate
 import me.xuwanjin.ominous.utils.getDateWithHours
 import java.io.*
+import java.lang.Runnable
 
 class OminousCatcher(
     private val mLogSavePath: String,
@@ -22,12 +25,18 @@ class OminousCatcher(
             BufferedReader(InputStreamReader(logCatcherProcess.inputStream))
 
         var logLine: String?
+        GlobalScope.launch(Dispatchers.IO) {
+            repeat(Int.MAX_VALUE) {
+                delay(60 * 1000)
+                Utils.dateWithHourFlow = getDateWithHours()
+            }
+        }
         while ((bufferedReader.readLine().also { logLine = it }) != null) {
 
             if (logLine.isNullOrEmpty()) {
                 continue
             }
-            if (logLine != null){
+            if (logLine != null) {
                 if (logLine!!.contains(mPid.toString(), true)) {
                     val logFilePath = prepareLogFilePath()
                     logFilePath?.let {
@@ -63,7 +72,7 @@ class OminousCatcher(
         /**
          *  准备该一小时的 log 存放的路径
          */
-        val logPathWithHours = logPathWithDate + File.separator + getDateWithHours() + ".log"
+        val logPathWithHours = logPathWithDate + File.separator + Utils.dateWithHourFlow + ".log"
         val logPathWithHoursFile = File(logPathWithHours)
         if (!logPathWithHoursFile.exists()) {
             try {
